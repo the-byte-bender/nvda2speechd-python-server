@@ -20,7 +20,7 @@ Follow these steps to set this project up:
 
 ## Usage Instructions
 
-Once you have completed the setup, simply run `pipenv run server.py` to start the server.
+Once you have completed the setup, simply run `pipenv run python server.py` to start the server.
 
 # Contributions, Issues, and Collaboration
 
