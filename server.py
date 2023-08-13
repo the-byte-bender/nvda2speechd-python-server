@@ -1,8 +1,9 @@
 import asyncio
 import websockets
 import msgpack
-import speechd
-speaker = speechd.Speaker('nvda2speechd')
+from accessible_output2 import outputs
+
+speaker = outputs.auto.Auto()
 
 def parse_message(data):
     try:
@@ -15,11 +16,11 @@ async def serve(websocket, path):
         message = parse_message(message)
         if type(message) is  str: 
             if message.lower() == 'cancelspeech':
-                speaker.cancel()
+                speaker.output("", interrupt=True)
         elif type(message) is dict:
             text = message["SpeakText"]
-            speaker.speak(text)
-
+            speaker.output(text, interrupt=False
+)
 
 start_server = websockets.serve(serve, "localhost", 3457, ping_timeout = None)
 
