@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 websockets = "*"
 msgpack = "*"
+accessible_output2 = "*"
 
 [dev-packages]
 
