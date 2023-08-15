@@ -18,9 +18,12 @@ async def serve(websocket, path):
             if message.lower() == 'cancelspeech':
                 speaker.output("", interrupt=True)
         elif type(message) is dict:
-            text = message["SpeakText"]
-            speaker.output(text, interrupt=False
-)
+            if "BrailleMessage" in message: 
+                text = message["BrailleMessage"]
+                speaker.braille(text)
+            elif "SpeakText" in message:
+                text = message["SpeakText"]
+                speaker.speak(text, interrupt=False)
 
 start_server = websockets.serve(serve, "localhost", 3457, ping_timeout = None)
 
